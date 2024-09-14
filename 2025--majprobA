@@ -1,0 +1,71 @@
+def wczytaj_dane(plik):
+    plik = open(plik, "r")
+    dane = plik.readlines()
+    plansza = []
+
+    for linia in dane:
+        plansza.append(linia.split())
+    for a in range(len(plansza)):
+        for b in range(len(plansza)):
+            plansza[a][b] = int(plansza[a][b])
+    return plansza
+
+dane = wczytaj_dane("plansza_przyklad.txt")
+
+def zad_4_1(dane):
+    wynik = open("wyniki4.txt","w")
+    plansza_z_nowymi_masztowcami = dane
+    liczba_pol = 0
+
+
+    for a in range(len(plansza_z_nowymi_masztowcami)):
+        for b in range(len(plansza_z_nowymi_masztowcami)):
+            if plansza_z_nowymi_masztowcami[a][b] == 1:
+                continue
+
+            if a == 0 and b == 0:
+                if plansza_z_nowymi_masztowcami[a][b+1] == 0 and plansza_z_nowymi_masztowcami[a+1][b] == 0 and plansza_z_nowymi_masztowcami[a+1][b+1] == 0:
+
+                    liczba_pol += 1
+                continue
+            if a == 0 and b == 9:
+                if plansza_z_nowymi_masztowcami[a][b-1] == 0 and plansza_z_nowymi_masztowcami[a+1][b] == 0 and plansza_z_nowymi_masztowcami[a+1][b-1] == 0:
+
+                    liczba_pol +=1
+                continue
+            if a == 9 and b == 0:
+                if plansza_z_nowymi_masztowcami[a][b+1] == 0 and plansza_z_nowymi_masztowcami[a-1][b] == 0 and plansza_z_nowymi_masztowcami[a-1][b+1] == 0:
+
+                    liczba_pol += 1
+                continue
+            if a == 9 and b == 9:
+                if plansza_z_nowymi_masztowcami[a][b-1] == 0 and plansza_z_nowymi_masztowcami[a-1][b] == 0 and plansza_z_nowymi_masztowcami[a-1][b-1] == 0:
+
+                    liczba_pol += 1
+                continue
+            if b == 0:
+                if  plansza_z_nowymi_masztowcami[a+1][b] == 0 and plansza_z_nowymi_masztowcami[a-1][b] == 0 and plansza_z_nowymi_masztowcami[a][b+1] == 0 and plansza_z_nowymi_masztowcami[a+1][b+1] == 0 and plansza_z_nowymi_masztowcami[a-1][b+1] == 0:
+
+                    liczba_pol += 1
+                continue
+            if b == 9:
+                if  plansza_z_nowymi_masztowcami[a-1][b] == 0 and plansza_z_nowymi_masztowcami[a+1][b] == 0 and plansza_z_nowymi_masztowcami[a][b-1] == 0 and plansza_z_nowymi_masztowcami[a+1][b-1] == 0 and plansza_z_nowymi_masztowcami[a-1][b-1] == 0:
+
+                    liczba_pol += 1
+                continue
+            if a == 0:
+                if plansza_z_nowymi_masztowcami[a+1][b] == 0 and plansza_z_nowymi_masztowcami[a][b+1] == 0 and plansza_z_nowymi_masztowcami[a][b-1] == 0 and plansza_z_nowymi_masztowcami[a+1][b-1] == 0 and plansza_z_nowymi_masztowcami[a+1][b+1] == 0:
+
+                    liczba_pol += 1
+                continue
+            if a == 9:
+                if plansza_z_nowymi_masztowcami[a-1][b] == 0 and plansza_z_nowymi_masztowcami[a][b+1] == 0 and plansza_z_nowymi_masztowcami[a][b-1] == 0 and plansza_z_nowymi_masztowcami[a-1][b-1] == 0 and plansza_z_nowymi_masztowcami[a-1][b+1] == 0:
+
+                    liczba_pol += 1
+                continue
+            if plansza_z_nowymi_masztowcami[a+1][b+1] == 0 and plansza_z_nowymi_masztowcami[a-1][b-1] == 0 and plansza_z_nowymi_masztowcami[a-1][b+1] == 0 and plansza_z_nowymi_masztowcami[a-1][b-1] == 0 and plansza_z_nowymi_masztowcami[a+1][b-1] == 0 and plansza_z_nowymi_masztowcami[a][b-1] == 0 and plansza_z_nowymi_masztowcami[a][b+1] == 0 and plansza_z_nowymi_masztowcami[a-1][b] == 0 and plansza_z_nowymi_masztowcami[a+1][b]:
+
+                liczba_pol += 1
+                continue
+    print(liczba_pol)
+zad_4_1(dane)
